@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <h1>Edit account</h1>
+            <a class="backButton" href="{% url 'account' %}"><img style="width: 25px; color: #b6e1ea;" src="{% static 'images/icons/arrow-left-solid.svg'%}" alt=""></a>
+            <br>
+
+            <form action="{% url 'edit' %}" method="POST" enctype="multipart/form-data">
+                <!-- Input:Text -->
+                {% csrf_token %}
+                
+                {% for feild in form%}
+                <div class="form__field">
+                    <label for="formInput#text">{{feild.label}}</label>
+                    {{feild}}
+                </div>
+                {% endfor %}
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
