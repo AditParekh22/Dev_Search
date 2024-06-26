@@ -39,7 +39,9 @@
                 </li>
                 {% endif %}
               </ul>
-              <a href="" class="btn btn--sub btn--lg">Send Message </a> #{% url 'send-message' userObj.id %}
+              {% if request.user.profile.id != userObj.id %}
+                <a href="{% url 'create-message' userObj.id %}" class="btn btn--sub btn--lg">Send Message </a>
+              {% endif %}
             </div>
           </div>
         </div>
